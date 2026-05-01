@@ -19,7 +19,9 @@ File or Folder | Purpose
 - (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
 - Start adding content, for example, a [db/schema.cds](db/schema.cds).
 
-
+## Import links to refere
+https://github.com/cap-js/mcp-server
+https://community.sap.com/t5/technology-blog-posts-by-sap/boost-your-cap-development-with-ai-introducing-the-mcp-server-for-cap/ba-p/14202849
 ## Learn More
 
 Learn more at https://cap.cloud.sap/docs/get-started/.
