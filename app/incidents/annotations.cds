@@ -2,17 +2,18 @@ using ProcessorService as service from '../../srv/ services';
 using from '../../db/schema';
 
 annotate service.Incidents with @(
-    UI.FieldGroup #GeneratedGroup : {
+     UI.FieldGroup #GeneratedGroup : {
         $Type : 'UI.FieldGroupType',
         Data : [
-            {
-                $Type : 'UI.DataField',
-                Label : 'customer_ID',
-                Value : customer_ID,
-            },
-            {
+              {
+                 $Type : 'UI.DataField',
+                 Label : 'customer_ID',
+                 Value : customer_ID,
+              },
+                {
                 $Type : 'UI.DataField',
                 Value : title,
+                Label : 'title',
             },
             {
                 $Type : 'UI.DataField',
@@ -33,6 +34,22 @@ annotate service.Incidents with @(
             Label : 'General Information',
             Target : '@UI.FieldGroup#GeneratedGroup',
         },
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'ConversationFacet',
+            Label : '{i18n>Conversation}',
+            Target : 'conversation/@UI.LineItem',
+        },
+    ],
+    UI.Identification : [
+        {
+            $Type : 'UI.DataField',
+            Value : customer_ID,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : title,
+        },
     ],
     UI.LineItem : [
         {
@@ -41,7 +58,7 @@ annotate service.Incidents with @(
             Label : '{i18n>Title}',
         },
         {
-            $Type : 'UI.DataField',
+           $Type : 'UI.DataField',
             Value : customer.name,
             Label : '{i18n>Customer}',
         },
@@ -63,8 +80,8 @@ annotate service.Incidents with @(
     ],
 );
 
-annotate service.Incidents with {
-    customer @Common.ValueList : {
+ annotate service.Incidents with {
+  customer @Common.ValueList : {
         $Type : 'Common.ValueListType',
         CollectionPath : 'Customers',
         Parameters : [
@@ -91,7 +108,7 @@ annotate service.Incidents with {
             },
         ],
     }
-};
+ };
 
 annotate service.Incidents with {
     status @(
@@ -114,4 +131,26 @@ annotate service.Urgency with {
 annotate service.Status with {
     code @Common.Text : descr
 };
+
+annotate service.Incidents.conversation with @(
+    UI.LineItem : [
+        {
+            $Type : 'UI.DataField',
+            Value : timestamp,
+            Label : '{i18n>Timestamp}',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : author,
+            Label : '{i18n>Author}',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : message,
+            Label : '{i18n>Message}',
+        },
+    ],
+);
+
+
 
